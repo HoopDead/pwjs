@@ -33,4 +33,13 @@ def health(request):
     })
 
 def sport(request):
-    return HttpResponse("Hello world")
+    top_headlines = newsapi.get_top_headlines(category = 'sports', language = 'en', country = 'pl')
+    return render(request, 'website/sport.html', {
+        'articles': top_headlines['articles']
+    })
+
+def technology(request):
+    top_headlines = newsapi.get_top_headlines(category = 'technology', language = 'en', country = 'pl')
+    return render(request, 'website/technology.html', {
+        'articles': top_headlines['articles']
+    })

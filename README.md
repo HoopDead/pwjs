@@ -32,9 +32,9 @@ Następnie napisanie widoku, który pozwala na definiowanie własnego, spersonal
  - [ ] Wymyślenie nazwy aplikacji
  - [x] Stworzenie pustej aplikacji w DJANGO
  - [x] Stworzenie repozytorium dla projektu
- - [ ] Zdefiniowanie wszystkich statycznych widoków
- - [ ] Zdefiniowanie wszystkich statycznych URL
- - [ ] Zdefiniowanie wszystkich zapytań API dla powyższych, statycznych danych aplikacji.
+ - [x] Zdefiniowanie wszystkich statycznych widoków
+ - [x] Zdefiniowanie wszystkich statycznych URL
+ - [x] Zdefiniowanie wszystkich zapytań API dla powyższych, statycznych danych aplikacji.
  - [ ] Stworzenie BOTa do Messengera
  - [ ] Zalinkowanie Bootstrapa do strony
  - [ ] Stworzenie block contentu, do którego dodawane będą kolejne widoki
