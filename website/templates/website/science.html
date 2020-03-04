@@ -1,0 +1,12 @@
+<html>
+    <head>
+    </head>
+    <body>
+        {% for item in articles %}
+        <h3>{{item.title}}</h3>
+        <img src = {{item.urlToImage}}/>
+        <p>{{item.description}}</p>
+        <hr>
+        {% endfor %}
+    </body>
+</html>
