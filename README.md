@@ -40,5 +40,5 @@ Następnie napisanie widoku, który pozwala na definiowanie własnego, spersonal
  - [ ] Stworzenie block contentu, do którego dodawane będą kolejne widoki
  - [ ] Stworzenie Layoutu strony
  - [ ] Stworzenie Designu strony
- - [ ] Stworzenie speronalizowanej strony
+ - [x] Stworzenie speronalizowanej strony
 
