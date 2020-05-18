@@ -2,29 +2,80 @@
 
 {% load static %}
 
-{% block title %}Strona Główna %}{% endblock %}
+{% block title %}Strona Główna{% endblock %}
 
 {% block content %}
-    <div class = "vh-100 min-vh-100"> 
-        <div class="d-flex justify-content-center align-items-center h-100"> 
+    {% if all_articles %}
+        <nav class="navbar navbar-expand-lg navbar-light" id = "navbarSearchResults">
+            <a class="navbar-brand" href="#">Article<span class = "purple-text">Finder</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+                <form class="form-inline">
+                    <div class="md-form my-0">
+                        <input class="form-control" type="text" placeholder="Szukaj" value = "{{query}}" aria-label="Szukaj">
+                    </div>
+                </form>
+            </div>
+        </nav>
+
+        <div class = "min-vh-100">
+            <div class = "container">
+                <div class = "col-sm-12 mx-left text-left mt-5">
+                    <footer class="blockquote-footer mb-3">Total results: <cite title="Source Title">{{all_articles.totalResults}}</cite></footer>
+                {% for article in all_articles.articles %}
+                    <cite>{{article.source.name}}</cite>
+                    <p class = "h5">{{article.title}}</p>
+                    <p>{{article.description}}</p>
+                    <hr>
+                {% endfor %}
+                </div>
+                <div class = "col-sm-12 mx-auto text-center">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination pagination-circle pg-purple justify-content-center mt-3">
+                            <li class="page-item disabled">
+                                <a class="page-link" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link">Next</a>
+                            </li>
+                    </ul>
+                </nav>
+               </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="d-flex justify-content-center align-items-center min-vh-100"> 
             <div class="container">
                 <div class="row mt-n5">
                     <div class="col-xs-12 mx-auto mt-n5">
                         <p class = "h1 mt-n5">Article<span class = "purple-text">Finder</span></p>
                     </div>
                     <div class = "col-md-12 col-xs-12 mx-auto mt-n5">
+                    <form method = "POST">{% csrf_token %}
                         <div class="md-form md-bg input-with-pre-icon w-100 mx-auto">
                             <i class="fas fa-search input-prefix"></i>
-                            <input type="text" id="prefixInside4" class="form-control">
-                            <label for="prefixInside4">Search for something interesting...</label>
+                            {{form.query}}
+                            <label for="queryInput">Search for something interesting...</label>
                         </div>
                     </div>
                     <div class = "col-md-12 text-center">
-                        <button class = "btn btn-primary">Search</button>
-                        <button type="button" class="btn btn-outline-primary waves-effect">Advanced searching</button>
+                        <button type = "submit" class = "btn btn-primary">Search</button>
+                        <button type="submit" class="btn btn-outline-primary waves-effect">Advanced searching</button>
+                    </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    {% endif %}
 {% endblock %}

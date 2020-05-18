@@ -29,16 +29,16 @@ Następnie napisanie widoku, który pozwala na definiowanie własnego, spersonal
 
 ## 4. TODO Lista
 
- - [ ] Wymyślenie nazwy aplikacji
+ - [x] Wymyślenie nazwy aplikacji
  - [x] Stworzenie pustej aplikacji w DJANGO
  - [x] Stworzenie repozytorium dla projektu
  - [x] Zdefiniowanie wszystkich statycznych widoków
  - [x] Zdefiniowanie wszystkich statycznych URL
  - [x] Zdefiniowanie wszystkich zapytań API dla powyższych, statycznych danych aplikacji.
  - [ ] Stworzenie BOTa do Messengera
- - [ ] Zalinkowanie Bootstrapa do strony
- - [ ] Stworzenie block contentu, do którego dodawane będą kolejne widoki
- - [ ] Stworzenie Layoutu strony
- - [ ] Stworzenie Designu strony
+ - [x] Zalinkowanie Bootstrapa do strony
+ - [x] Stworzenie block contentu, do którego dodawane będą kolejne widoki
+ - [x] Stworzenie Layoutu strony
+ - [x] Stworzenie Designu strony
  - [x] Stworzenie speronalizowanej strony
 

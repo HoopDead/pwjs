@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from newsapi import NewsApiClient
 from .forms import api_request_query
 from django.shortcuts import redirect
+import math as m
 
 
 newsapi = NewsApiClient(api_key = 'b0307aaaee13449f8a2e6b100a862b08')
@@ -15,10 +16,11 @@ def index(request):
         if form.is_valid():
             cd = form.cleaned_data
             query = cd.get('query')
-            all_articles = newsapi.get_everything(q = 'bitcoin', page = 1, language = 'en', sort_by = 'relevancy')
-            all_articles['q'] = query
-            print(all_articles)
-            return render(request, 'website/index.html', {'form': form, 'all_articles': all_articles})
+            page = 1
+            all_articles = newsapi.get_everything(q = query, page = page, page_size = 25, language = 'en', sort_by = 'relevancy')
+            num_of_pages = m.ceil(all_articles['totalResults']/25)
+            print(num_of_pages)
+            return render(request, 'website/index.html', {'form': form, 'all_articles': all_articles, 'query': query})
     return render(request, 'website/index.html', {'form': form})
 
 def science(request):
