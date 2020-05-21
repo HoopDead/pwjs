@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from newsapi import NewsApiClient
 from .forms import api_request_query
 from django.shortcuts import redirect
+from django.core.paginator import Paginator
 import math as m
 
 
@@ -16,8 +17,14 @@ def index(request):
         if form.is_valid():
             cd = form.cleaned_data
             query = cd.get('query')
-            page = 1
-            all_articles = newsapi.get_everything(q = query, page = page, page_size = 25, language = 'en', sort_by = 'relevancy')
+            page = request.GET.get('page')
+            query_get = request.GET.get(query)
+            print(query_get)
+            print(page)
+            if page == None:
+                page = 1
+            print(query)
+            all_articles = newsapi.get_everything(q = query, page = int(page), page_size = 25, language = 'en', sort_by = 'relevancy')
             num_of_pages = m.ceil(all_articles['totalResults']/25)
             print(num_of_pages)
             return render(request, 'website/index.html', {'form': form, 'all_articles': all_articles, 'query': query})
