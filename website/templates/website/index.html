@@ -12,11 +12,11 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="basicExampleNav">
-                <form class="form-inline">
-                    <div class="md-form my-0">
-                        <input class="form-control" type="text" placeholder="Szukaj" value = "{{query}}" aria-label="Szukaj">
-                    </div>
-                </form>
+                <ul class = "navbar-nav">
+                    <li class = "nav-item">
+                        <a class = "nav-link" href = "{% url 'index' %}">Home page</a>
+                    </li>
+                </ul>
             </div>
         </nav>
 
@@ -25,32 +25,30 @@
                 <div class = "col-sm-12 mx-left text-left mt-5">
                     <footer class="blockquote-footer mb-3">Total results: <cite title="Source Title">{{all_articles.totalResults}}</cite></footer>
                 {% for article in all_articles.articles %}
-                    <cite>{{article.source.name}}</cite>
-                    <p class = "h5">{{article.title}}</p>
-                    <p>{{article.description}}</p>
+                    <a href = "{{article.url}}" class = "articleUrl">
+                        <cite>{{article.source.name}}</cite>
+                        <p class = "h5">{{article.title}}</p>
+                        <p>{{article.description}}</p>
+                    </a>
                     <hr>
                 {% endfor %}
                 </div>
                 <div class = "col-sm-12 mx-auto text-center">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination pagination-circle pg-purple justify-content-center mt-3">
-                            <li class="page-item disabled">
-                                <a class="page-link" tabindex="-1">Previous</a>
-                            </li>
-                            <li class="page-item active">
-                                <a href = "?page={{page}}"class="page-link">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link">Next</a>
-                            </li>
-                    </ul>
-                </nav>
+                        {% for key, value in pages.items %}
+                            {% if value != page %}
+                                <li class = "page-item">
+                                    <a href = "?query={{query}}&page={{value}}"class = "page-link">{{value}}</a>
+                                </li>
+                            {% else %}
+                                <li class = "page-item active">
+                                    <a href = "?query={{query}}&page={{value}}"class = "page-link">{{value}}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        </ul>
+                    </nav>
                </div>
             </div>
         </div>
@@ -62,7 +60,7 @@
                         <p class = "h1 mt-n5">Article<span class = "purple-text">Finder</span></p>
                     </div>
                     <div class = "col-md-12 col-xs-12 mx-auto mt-n5">
-                    <form method = "POST">{% csrf_token %}
+                    <form method = "GET">
                         <div class="md-form md-bg input-with-pre-icon w-100 mx-auto">
                             <i class="fas fa-search input-prefix"></i>
                             {{form.query}}

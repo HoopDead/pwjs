@@ -1,3 +1,13 @@
 #navbarSearchResults {
     background: #ede7f6  !important;
 }
+
+.articleUrl {
+    color: #000;
+}
+
+
+.articleUrl:hover {
+    color: purple;
+    font-size: 18px;
+}
