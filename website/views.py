@@ -16,13 +16,12 @@ def index(request):
         form = api_request_query(request.GET)
         if form.is_valid():
             page = 1
-            page = int(request.GET.get('page'))
+            page = int(request.GET.get('page', '1'))
             query = request.GET.get('query')
             if page == 1:
                 pages = {'1': 1, '2': 2, '3': 3}
             elif page > 1:
                 pages = {'1': page-1, '2': page, '3': page+1}
-            print(pages)
             all_articles = newsapi.get_everything(q = query, page = int(page), page_size = 25, language = 'en', sort_by = 'relevancy')
             num_of_pages = m.ceil(all_articles['totalResults']/25)
             return render(request, 'website/index.html', {'form': form, 'all_articles': all_articles, 'pages': pages, 'query': query, 'page': page})

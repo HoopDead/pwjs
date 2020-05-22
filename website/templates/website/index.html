@@ -7,7 +7,7 @@
 {% block content %}
     {% if all_articles %}
         <nav class="navbar navbar-expand-lg navbar-light" id = "navbarSearchResults">
-            <a class="navbar-brand" href="#">Article<span class = "purple-text">Finder</span></a>
+            <a href = "{% url 'index' %}" class="navbar-brand" href="#">Article<span class = "purple-text">Finder</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -23,6 +23,13 @@
         <div class = "min-vh-100">
             <div class = "container">
                 <div class = "col-sm-12 mx-left text-left mt-5">
+                    <form method = "GET">
+                        <div class="md-form md-bg input-with-pre-icon w-100 mx-auto">
+                            <i class="fas fa-search input-prefix"></i>
+                            {{form.query}}
+                            <label for="queryInput">Get bored of these? Ask for more!</label>
+                        </div>
+                    </form>
                     <footer class="blockquote-footer mb-3">Total results: <cite title="Source Title">{{all_articles.totalResults}}</cite></footer>
                 {% for article in all_articles.articles %}
                     <a href = "{{article.url}}" class = "articleUrl">
