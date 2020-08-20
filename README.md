@@ -2,43 +2,35 @@
 
 ## 1. Idea
 
- - Stworzenie aplikacji internetowej, która pozwoli na szybkie zbieranie artykułów z kilku kategorii - (biznes, nauka.).
- - Stworzenie BOTa do aplikacji Messenger, który wraz z aktualizacją API wysyła wiadomość do użytkownika o najnowszym artykule
- - Stworzenie spersonalizowanego widoku dla użytkownika - możliwość wyboru źródeł/wyszukiwania po frazie.
+ - Create an web app, that allows you to quickly find an articles about anything you want
+ - Create an Messenger BOT, that with every API update send you a message with newest articles
+ - Create a user settings, where user can choose the source or specific cateogry
   
 ## 2. Development Plan
 
-Za pomocą Frameworka DJANGO, oraz darmowego planu developerskiego w API [News Api](https://newsapi.org/) stworzenie strony, gdzie będą dostępne widoki:
 
-* Biznes
-* Rozrywka
-* Zdrowie
-* Nauka
-* Sport
-* Technologia
+With Django, and free developer plan [News Api](https://newsapi.org/) create an website, where user can search for articles with key word in it.
 
-Następnie napisanie widoku, który pozwala na definiowanie własnego, spersonalizowanego widoku, na którym możemy wyświetlać swoje ulubione źródła, lub szukać czegoś po dowolnej frazie. 
-*Przykład: szukanie po frazie "bitcoin" zwróci ostatnie artykuły ze wszystkich źródeł, które zawierają tagi bitcoin w swojej treści/tytule/opisie*
+*For example: User insert "bitcoin" keyword, and app will return all articles, from all sources, that handles tag/word in it.
 
-## 3. Technologie
+## 3.Technologies
 
-**BACKEND**: Django, RestfulAPI, Python. Możliwe, że SQLite3, jeżeli będzie potrzebna komunikacja z bazą danych.
+**BACKEND**: Django, RestfulAPI, Python.
 
-**FRONTEND**: Raw JavaScript, opcjonalnie JQuery - zależnie od tego, jak wiele dynamicznych rzeczy będzie do stworzenia. HTML, CSS, Bootstrap, może preprocessor Sass, jeżeli będzie dużo kodu CSS. 
+**FRONTEND**: Vanila JavaScript, HTML, CSS, Bootstrap.
 
+## 4. TODO List
 
-## 4. TODO Lista
-
- - [x] Wymyślenie nazwy aplikacji
- - [x] Stworzenie pustej aplikacji w DJANGO
- - [x] Stworzenie repozytorium dla projektu
- - [x] Zdefiniowanie wszystkich statycznych widoków
- - [x] Zdefiniowanie wszystkich statycznych URL
- - [x] Zdefiniowanie wszystkich zapytań API dla powyższych, statycznych danych aplikacji.
- - [ ] Stworzenie BOTa do Messengera
- - [x] Zalinkowanie Bootstrapa do strony
- - [x] Stworzenie block contentu, do którego dodawane będą kolejne widoki
- - [x] Stworzenie Layoutu strony
- - [x] Stworzenie Designu strony
- - [x] Stworzenie speronalizowanej strony
+ - [x] Think of app name
+ - [x] Create empty Django app
+ - [x] Create repo for project
+ - [x] Create all of static views
+ - [x] Create all of static urls
+ - [x] Define every static api call for app
+ - [ ] Create "BOT" for Messenger
+ - [x] Include Boostrap for responsive design
+ - [x] Create block content
+ - [x] Create website layout
+ - [x] Create design layout
+ - [x] Create a personal website
 
